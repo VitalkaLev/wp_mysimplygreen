@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Generic Single Page
+ * Template Name: Home Page Builders
  *
  * This is the wordpress posts template. It contains a list of all the posts and media to date.
  *
@@ -9,22 +9,13 @@
  * @since 2020
  */
 ?>
-<?php get_header(); ?>
+<?php get_header('builders'); ?>
 <?php $dir = get_stylesheet_directory_uri(); ?>
-
-<!-- The Loop  index.php-->
-<section class="job-postings">
-	<div class="inner-box">
+<!-- The Loop -->
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <?php $meta = get_post_meta( $post->ID, 'meta', true ); ?>
-    <h2><?php the_title() ;?></h2>
-        <?php the_excerpt(); ?>
-        <a href="<?php the_permalink();?>">Learn more</a>
-        <hr>
+        <?php the_content(); ?>
     <?php endwhile; endif; wp_reset_postdata(); ?>
-	</div>
-</section>
 
 
-
-<?php get_footer(); ?>
+<?php get_footer("builders"); ?>
