@@ -1,0 +1,240 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: SGHS Product Specific.ai
+Color Mode: RGB color
+Color Profile: sRGB IEC61966-2.1
+Ruler Units: pixels
+Artboard Dimensions: 1366 px x 2210 px
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:NONE
+
+-----------------------------------------------------------------------------
+Fonts:
+Font Awesome 5 Free Solid (OTF)
+Montserrat Regular (TrueType)
+Montserrat Medium (TrueType)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+Montserrat Regular
+Montserrat Medium
+Montserrat Regular
+Montserrat Medium
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Novo Water Treatment System.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1637K, 559 by 750 pixels
+Dimensions: 267 by 358.229 points 
+Resolution: 150.742 by 150.742 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/cleanstart large.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10395K, 1909 by 1394 pixels
+Dimensions: 200.25 by 146.227 points 
+Resolution: 686.383 by 686.383 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft Ultrefiner II Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 2197K, 750 by 750 pixels
+Dimensions: 166.979 by 166.979 points 
+Resolution: 323.393 by 323.393 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft EC4 OxyTech Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1057K, 361 by 750 pixels
+Dimensions: 92.897 by 193 points 
+Resolution: 279.793 by 279.793 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft Ultrefiner II Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 2197K, 750 by 750 pixels
+Dimensions: 166.979 by 166.979 points 
+Resolution: 323.393 by 323.393 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/cleanstart large.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10395K, 1909 by 1394 pixels
+Dimensions: 200.25 by 146.227 points 
+Resolution: 686.383 by 686.383 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Novo Water Treatment System.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1637K, 559 by 750 pixels
+Dimensions: 267 by 358.229 points 
+Resolution: 150.742 by 150.742 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft Ultrefiner II Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 2197K, 750 by 750 pixels
+Dimensions: 166.979 by 166.979 points 
+Resolution: 323.393 by 323.393 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft EC4 OxyTech Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1057K, 361 by 750 pixels
+Dimensions: 92.897 by 193 points 
+Resolution: 279.793 by 279.793 pixels per inch
+
+
+/Users/sandrafrankel/Desktop/SG Specific Product Page Mockup_TW edits.pdf
+Type: PDF
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.22.07 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 16960K, 3062 by 1418 pixels
+Dimensions: 1364.241 by 631.774 points 
+Resolution: 161.602 by 161.602 pixels per inch
+
+
+/Users/sandrafrankel/Downloads/SGHS All Images/001 ARCHIVE/novo-logo.jpg
+Type: CMYK
+Bits per Pixel: 32
+Channels: 4
+Size: 4394K, 1500 by 750 pixels
+Dimensions: 174.554 by 87.277 points 
+Resolution: 618.718 by 618.718 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.22.07 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 16960K, 3062 by 1418 pixels
+Dimensions: 1364.241 by 631.774 points 
+Resolution: 161.602 by 161.602 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Novo Water Treatment System.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1637K, 559 by 750 pixels
+Dimensions: 267 by 358.229 points 
+Resolution: 150.742 by 150.742 pixels per inch
+
+
+/Users/sandrafrankel/Downloads/SGHS All Images/001 ARCHIVE/novo-logo.jpg
+Type: CMYK
+Bits per Pixel: 32
+Channels: 4
+Size: 4394K, 1500 by 750 pixels
+Dimensions: 174.554 by 87.277 points 
+Resolution: 618.718 by 618.718 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.23.50 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10289K, 3070 by 858 pixels
+Dimensions: 1375.21 by 384.342 points 
+Resolution: 160.732 by 160.732 pixels per inch
+
+
+/Users/sandrafrankel/Desktop/SG Specific Product Page Mockup_TW edits.pdf
+Type: PDF
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/Rainsoft EC4 OxyTech Water Treatment.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 1057K, 361 by 750 pixels
+Dimensions: 92.897 by 193 points 
+Resolution: 279.793 by 279.793 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Images/Product Images/Water Treatment/cleanstart large.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10395K, 1909 by 1394 pixels
+Dimensions: 200.25 by 146.227 points 
+Resolution: 686.383 by 686.383 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.23.50 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10289K, 3070 by 858 pixels
+Dimensions: 1375.21 by 384.342 points 
+Resolution: 160.732 by 160.732 pixels per inch
+
+
+/Users/sandrafrankel/Desktop/SG Specific Product Page Mockup_TW edits.pdf
+Type: PDF
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.23.50 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 10289K, 3070 by 858 pixels
+Dimensions: 1375.21 by 384.342 points 
+Resolution: 160.732 by 160.732 pixels per inch
+
+
+/Users/sandrafrankel/OneDrive - Simple Green Home Services/Digital assets/!-Web Pages/Simply Green/SG Shopping Experience/Filters/Desktop/Images/Screen Shot 2021-03-03 at 8.22.07 AM
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 16960K, 3062 by 1418 pixels
+Dimensions: 1364.241 by 631.774 points 
+Resolution: 161.602 by 161.602 pixels per inch
+
+
+/Users/sandrafrankel/Downloads/SGHS All Images/001 ARCHIVE/novo-logo.jpg
+Type: CMYK
+Bits per Pixel: 32
+Channels: 4
+Size: 4394K, 1500 by 750 pixels
+Dimensions: 174.554 by 87.277 points 
+Resolution: 618.718 by 618.718 pixels per inch

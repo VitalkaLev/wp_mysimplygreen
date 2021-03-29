@@ -1,0 +1,85 @@
+/* Dark Green = rgba(86,166,63,1) */
+/* Light Green = #89B64D */
+/* Lightest Green = #b7da8a */
+h1,h2{color:rgba(86,166,63,1);}
+h3{color:#5C626B;}
+a, .faq-accordion span {color:#5C626B; text-decoration:underline; text-decoration-color:#D5E9CF; text-decoration-thickness:0.2em; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; }
+.faq-accordion {
+	text-decoration: none;
+}
+button,.button:not(li),input[type="submit"]{background:rgba(86,166,63,1);}
+
+.two-col-list ul > li > a, {
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.two-col-list ul > li > a:hover, .two-col-list ul > li > a:focus, 
+.faq-accordion:hover span, 
+.faq-accordion:focus span, 
+.faq-accordion:active span, 
+.faq-accordion:hover,
+.faq-accordion:focus,
+.faq-accordion:active {
+	background-color: #D5E9CF;
+	text-decoration-color:#D5E9CF;
+}
+
+.reverse.button,button:not([role=tab]):hover,.button:not(li):hover,input[type="submit"]:hover{box-shadow:inset 0 0 0 2px #89B64D!important;color:#89B64D!important;}
+a.button.phone:hover:before{background:url(../images/icon-phone-green.svg) no-repeat center center / contain;}
+li:before{background:#999;}
+#site-header a:not(.button){color:#5C626B;}
+.testimonials h2 + p{color:rgba(86,166,63,1);}
+.gform_wrapper span.gform_description{color:rgba(86,166,63,1);}
+.hero .image-side:after{background:rgba(86,166,63,1);}
+.form-block.dark{background-color:rgba(86,166,63,1);}
+.form-block.light{background-color:#89B64D;}
+.now .price{color:rgba(86,166,63,1);}
+.was .price:after{border:1px solid rgba(86,166,63,1);}
+.big-dot .text-side {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(8, 130, 65, 1) 0%,
+    rgba(8, 130, 65, 1) 70%,
+    rgba(8, 130, 65, 0) 70.3%
+  );
+}
+.stats .item .stat{color:#89B64D;}
+.timeline .inner-box .item h3:before{border-bottom-color:#89B64D;}
+
+.half-and-half-products .price-block{background:#b7da8a;}
+.half-and-half-products .image-side:after,.featured .item .image-side:after, .half-and-half .image-side:after,.category-list .item .image-side:after{background:rgba(86,166,63,1);}
+.fsBody.frame .button{color:rgba(86,166,63,1)!important;}
+.half-and-half-products .was .price:before{border-top:2px solid rgba(86,166,63,1);}
+.half-and-half-products .now .month{color:rgba(86,166,63,1);}
+
+.grey{background: #fff;}
+.dark-grey{background:#666;}
+.green{background:#89B64D;}
+
+.heating #tab-block #heating,
+.cooling #tab-block #cooling,
+.water-treatment #tab-block #water-treatment,
+.water-heating #tab-block #water-heating,
+.air-filtration #tab-block #air-filtration{background:rgba(86,166,63,1);}
+
+.heating #heating a,
+.cooling #cooling a,
+.water-treatment #water-treatment a,
+.water-heating #water-heating a,
+.air-filtration #air-filtration a{background:rgba(86,166,63,1);color:#fff;}
+
+.form-bottom .subheader{
+  color:#5C626B;
+}
+
+
+@media only screen and (min-width: 1400px) {
+    input[type="checkbox"]:checked,input[type="radio"]:checked{box-shadow:inset 0 0 0 1.5vw rgba(86,166,63,1);}
+    input[type="checkbox"],input[type="radio"]{box-shadow:inset 0 0 0 0 rgba(86,166,63,1);}
+
+}
+@media (max-width:680px){
+	.big-dot{background:rgba(86,166,63,1)!important;}
+}
