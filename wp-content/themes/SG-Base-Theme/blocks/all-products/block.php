@@ -342,8 +342,18 @@
 
     function brand_ajax_get() {
 
+        function slickCarousel() {
+            $('.item__slider').slick();
+        }
+
+        function destroyCarousel() {
+            if ($('.item__slider').hasClass('slick-initialized')) {
+                $('.item__slider').slick('destroy');
+            }      
+        }
+
+
         var category = $(this).data('category'); 
-        console.log(category);
         var ajaxurl = '../wp-admin/admin-ajax.php';
 
         $.ajax({
@@ -352,6 +362,12 @@
             data: { action: "load-filter", product_category: category , product_models: models , product_locations: locations , product_brands: brands , product_sizes: sizes },
             success: function(response) {
                 $(".product-ajax").html(response);
+                
+                destroyCarousel()
+                slickCarousel();
+
+                $('.category-filter__body').prop('hidden', true);
+
                 return false;
             }
         });

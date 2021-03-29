@@ -3,6 +3,8 @@
 		return '';
 	});
 
+	
+
   	function dd( $data ){
 		echo '<pre>';
 			var_dump( $data );
@@ -25,41 +27,31 @@
 	
 	function product_ajax_get () {
 
-		$product_category = $_POST['product_category'];
-		// dd($product_category);
+		$dir = "/wp-content/themes/SG-Base-Theme";
 
 		if( !empty($_POST['product_brands'])  ){
 			$brand_name = $_POST['product_brands'];
-		} else {
-			$brand_name = 'NOT EXISTS';
-		}
-		dd($brand_name);
+		} 
+		// dd($brand_name);
 		
 		if( !empty($_POST['product_models']) ){
 			$product_model = $_POST['product_models'];
-		} else {
-			$product_model = 'NOT EXISTS';
-		}
-
-		dd($product_model);
+		} 
+		// dd($product_model);
 		
 
 		if( !empty($_POST['product_locations'])  ){
 			$product_location = $_POST['product_locations'];
-		} else {
-			$product_location = 'NOT EXISTS';
-		}
-		dd($product_location);
+		} 
+		// dd($product_location);
 
 		if( !empty($_POST['product_sizes']) ){
 			$product_size = $_POST['product_sizes'];
-		} else {
-			$product_size = 'NOT EXISTS';
-		}
-		dd($product_size);
+		} 
+		// dd($product_size);
 
-		if( !empty($_POST['product_sizes']) || !empty($_POST['product_locations'])  ||  !empty($_POST['product_models']) || !empty($_POST['product_brands'])  ){
-			echo 'and';
+		if( !empty($_POST['product_sizes']) and !empty($_POST['product_locations'])  and  !empty($_POST['product_models']) and !empty($_POST['product_brands'])  ){
+			// echo 'and';
 			$product_args = array(
 				'post_type' => 'products',
 				'numberposts'   => -1,          
@@ -72,27 +64,31 @@
 						'taxonomy' => 'product_model',
 						'field' => 'name',
 						'terms'	  	=> $product_model ,
+						'operator' => 'OR'
 					),
 					array(
 						'taxonomy' => 'product_location',
 						'field' => 'name',
 						'terms'	  	=> $product_location ,
+						'operator' => 'OR'
 					),
 					array(
 						'taxonomy' => 'product_brand',
 						'field' => 'name',
 						'terms'	  	=> $brand_name ,
+						'operator' => 'OR'
 					),
 					array(
 						'taxonomy' => 'product_size',
 						'field' => 'name',
 						'terms'	  	=> $product_size ,
+						'operator' => 'OR'
 					),
 				),
 			);
 
 		} else {
-			echo 'OR';
+			// echo 'OR';
 			$product_args = array(
 				'post_type' => 'products',
 				'numberposts'   => -1,          
@@ -130,25 +126,123 @@
 		
 
 		$product_posts = get_posts( $product_args );
-		dd( $product_posts );
+		// dd( $product_posts );
 		ob_start ();
 	
 		if ( $product_posts ) {
 			foreach ( $product_posts as $product_post ) { setup_postdata( $product_post ); ?>
 
-				<div class="item" style="display: grid">
-					  <div class="text-side">
-					    <!-- <php echo get_field('acf_product_brand_logo', $product_post->ID); ?> -->
+				<div class="item">
+                        <div class="item__logo">
+                            <picture>
+                                <source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
+                                <img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="описание" />
+                            </picture>
+                        </div>
+                        <div class="item__hero">
+                            <div class="item__title">
+                                <span><?php the_title(); ?></span>
+                            </div>
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">
+                                <?php echo get_field('acf_product_brand_name', $product_post->ID); ?>
+                            </a>
+                            <div class="item__characteristics">
+                                <div class="item__characteristic ">
+                                    <span><?php echo get_field('acf_product_btu', $product_post->ID); ?></span>
+                                    <span>BTU</span>
+                                </div>
+                                <div class="item__characteristic">
+                                    <span><?php echo get_field('acf_product_rating', $product_post->ID); ?></span>
+                                    <span>Efficiency Rating</span>
+                                </div>
+                                <div class="item__characteristic">
+                                    <span><?php echo get_field('acf_product_size', $product_post->ID); ?></span>
+                                    <span>Size</span>
+                                </div>
+                            </div>
+                            <div class="item__slider">
+                                <?php 
 
-					  	<?php echo wp_get_attachment_image(get_field('acf_product_brand_logo', $product_post->ID),'medium'); ?>
-						<h3><?php echo get_the_title($product_post->ID); ?></h3>
-						<p><?php echo get_the_excerpt($product_post->ID);?></p>        
-						<div class="cta-block"><a href="<?php the_permalink($product_post->ID); ?>">View details ›</a></div>                
-					</div>
-					<div class="image-side">
-						<?php echo wp_get_attachment_image(get_post_thumbnail_id($product_post->ID),'medium'); ?>
-					</div>
-				</div>
+                                    $gallery = get_field('acf_product_gallery', $product_post->ID);
+
+                                    if( $gallery ): ?>
+                                    
+                                        <?php foreach( $gallery as $gallery_item ): ?>
+                                            <?php if( !empty($gallery_item) ){ ?>
+                                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                                    <picture class="h-object-fit">
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" alt="описание" />
+                                                    </picture>
+                                                </a>
+                                            <?php } else { ?>
+                                                <a  href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                                    <picture class="h-object-fit">
+                                                        <source srcset="<?php echo $dir; ?>/placeholder.png" media="(max-width: 560px) ">
+                                                        <img src="<?php echo $dir; ?>/placeholder.png" alt="описание" />
+                                                    </picture>
+                                                </a>
+                                            <?php } ?>
+
+                                              
+                                        <?php endforeach; ?>
+                                    
+                                    <?php endif; ?>
+                            
+                            </div>
+                            <div class="item__recommend">
+                                <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                            </div>
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">Learn more</a>
+                        </div>
+                        <div class="item__info">
+                            <div class="item__desc">
+                                <?php echo get_field('acf_product_info', $product_post->ID); ?>
+                            </div>
+                            <div class="item__rate-price">
+                                <div class="item__rate">
+                                    <div class="item__rate-stars">
+                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                    </div>
+                                    <span>Google Rating</span>
+                                </div>
+                                <div class="item__price">
+                                    <span>Relative Price: <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
+                                </div>
+                            </div>
+                            <div class="item__offer-txt">
+                                
+                                <?php if( have_rows('acf_product_offer') ): ?>
+                                    <ul class="item__offer-list ">
+                                        <?php while( have_rows('acf_product_offer') ): the_row(); ?>
+
+                                            <li>
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>
+                                                    <?php echo get_sub_field('acf_product_offer_content', $product_post->ID); ?>
+                                                </span>
+                                            </li>
+                                        <?php endwhile; ?>
+                                    </ul>
+                                <?php endif; ?>
+
+
+                                <div class="item__txt">
+                                    <span>
+                                        <?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item__links">
+                                <a href="#" class="button">Benefits of leasing</a>
+                                <a href="#" class="button">Speak to a home specialist </a>
+                            </div>
+                        </div>
+                    </div>
 
 			<?php } 
 		} else {
