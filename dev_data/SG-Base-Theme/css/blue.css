@@ -1,0 +1,59 @@
+/* Dark Blue = #005889 */
+/* Light Blue = #a5ddee */
+/* Partner Color = #c3001d */
+
+h1,h2{color:#005889;}
+h3{color:#005889;}
+button,a.button,input[type="submit"]{background:#005889;}
+li:before{background:#999;}
+#site-header a:not(.button){color:#005889;}
+.testimonials h2 + p{color:#005889;}
+.gform_wrapper span.gform_description{color:#005889;}
+.hero .image-side:after{background:#005889;}
+.form-block.dark{background-color:#005889;}
+.form-block.light{background-color:#a5ddee;}
+.now .price{color:#005889;}
+.was .price:after{border:1px solid #005889;}
+.big-dot .text-side {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 88, 137, 1) 0%,
+    rgba(0, 88, 137, 1) 70%,
+    rgba(0, 88, 137, 0) 70.3%
+  );
+}
+.stats .item .stat{color:#005889;}
+.timeline .inner-box .item h3:before{border-bottom-color:#005889;}
+
+.half-and-half-products .price-block{background:#005889;}
+.half-and-half-products .image-side:after,.featured .item .image-side:after, .half-and-half .image-side:after,.category-list .item .image-side:after{background:#005889;}
+.fsBody.frame .button{color:#005889!important;}
+.half-and-half-products .was .price:before{border-top:2px solid #005889;}
+.half-and-half-products .now .month{color:#005889;}
+
+.grey{background:rgba(248,248,248,1);}
+.dark-grey{background:#666;}
+.green{background:#005889;}
+
+.heating #tab-block #heating,
+.cooling #tab-block #cooling,
+.water-treatment #tab-block #water-treatment,
+.water-heating #tab-block #water-heating,
+.air-filtration #tab-block #air-filtration{background:#005889;}
+
+.heating #heating a,
+.cooling #cooling a,
+.water-treatment #water-treatment a,
+.water-heating #water-heating a,
+.air-filtration #air-filtration a{background:#005889;color:#fff;}
+footer{background:#649651!important;}
+footer .footer-social{display:none;}
+
+@media only screen and (min-width: 1400px) {
+    input[type="checkbox"]:checked,input[type="radio"]:checked{box-shadow:inset 0 0 0 1.5vw #005889;}
+    input[type="checkbox"],input[type="radio"]{box-shadow:inset 0 0 0 0 #005889;}
+
+}
+@media (max-width:680px){
+	.big-dot{background:#005889!important;}
+}
