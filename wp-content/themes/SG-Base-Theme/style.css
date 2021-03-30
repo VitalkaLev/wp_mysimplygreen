@@ -23,6 +23,9 @@ Text Domain: simplygroup
   --color-white: #fff;
   --color-grey-body: #5C626B;
 }
+:root {
+  --sa-uid: '0-42617b03-da03-4e1a-4d68-be29f6baf2d9$ip$185.42.129.120';
+}
 
 html,
 body {

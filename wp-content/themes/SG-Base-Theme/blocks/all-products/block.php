@@ -224,7 +224,9 @@
                             
                             </div>
                             <div class="item__recommend">
-                                <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                                <?php if( has_excerpt($product_post->ID) ){ ?>
+                                    <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                                <?php } ?>
                             </div>
                             <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">Learn more</a>
                         </div>
@@ -271,8 +273,18 @@
                                 </div>
                             </div>
                             <div class="item__links">
-                                <a href="#" class="button">Benefits of leasing</a>
-                                <a href="#" class="button">Speak to a home specialist </a>
+                                <button id="#modal-product-<?php echo $product_post->ID ?>" class="button">Benefits of leasing</button>
+                                <button id="#modal-product-form" class="button">Speak to a home specialist </button>
+                            </div>
+                        </div>
+                        <div id="modal-product-<?php echo $product_post->ID ?>" class="modal" aria-modal="true" role="dialog">
+                            <div class="modal-content">
+                                <span class="close">
+                                    <button class="btn--no-style" style="border: none !important">×</button>
+                                </span>
+                                <div class="modal-inner">
+                                    <?php echo get_field('acf_product_modal', $product_post->ID); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -282,97 +294,15 @@
                 wp_reset_postdata(); ?>
         </div>
     </div>
+    <div id="modal-product-form" class="modal" role="dialog">
+        <div class="modal-content">
+            <span class="close">
+                <button class="btn--no-style" style="border: none !important">×</button>
+            </span>
+            <div class="modal-inner">
+                form
+            </div>
+        </div>
+    </div>
 </section>
 
-<script>
-
-        var models  = [];
-        var brands = [];
-        var locations = [];
-        var sizes = [];
-
-
-        $(".category-filter-group input").on("change", function(){
-            
-            var $this = $(this)
-            var $thisValue = $this.val(); 
-            var $thisData = $this.data('group'); 
-            
-            if ($this.is(":checked")) 
-            {
-                if($thisData == 'models') {
-                    models.push($this.val());
-                }
-
-                if($thisData == 'sizes') {
-                    sizes.push($this.val());
-                }
-
-                if($thisData == 'brands') {
-                    brands.push($this.val());
-                }
-
-                if($thisData == 'locations') {
-                    locations.push($this.val());
-                }
-
-            } else {
-                models = models.filter(x => x != $this.val());
-                if($thisData == 'models') {
-                    models = models.filter(x => x != $this.val());
-                }
-
-                if($thisData == 'sizes') {
-                    sizes = sizes.filter(x => x != $this.val());
-                }
-
-                if($thisData == 'brands') {
-                    brands = brands.filter(x => x != $this.val());
-                }
-
-                if($thisData == 'locations') {
-                    locations = locations.filter(x => x != $this.val());
-                }
-            }
-            
-
-        });
-
-    
-
-    function brand_ajax_get() {
-
-        function slickCarousel() {
-            $('.item__slider').slick();
-        }
-
-        function destroyCarousel() {
-            if ($('.item__slider').hasClass('slick-initialized')) {
-                $('.item__slider').slick('destroy');
-            }      
-        }
-
-
-        var category = $(this).data('category'); 
-        var ajaxurl = '../wp-admin/admin-ajax.php';
-
-        $.ajax({
-            type: 'POST',
-            url: ajaxurl,
-            data: { action: "load-filter", product_category: category , product_models: models , product_locations: locations , product_brands: brands , product_sizes: sizes },
-            success: function(response) {
-                $(".product-ajax").html(response);
-                
-                destroyCarousel()
-                slickCarousel();
-
-                $('.category-filter__body').prop('hidden', true);
-
-                return false;
-            }
-        });
-    }
-
-    $('.category-filter__submit').on('click' , brand_ajax_get);
-
-</script>

@@ -68,6 +68,6 @@
         });
     </script>
     <script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
-    <script src='<?php echo $dir; ?>/js/my.js'></script>
+    <script src='<?php echo $dir; ?>/js/swipeks.js'></script>
     </body>
 </html>
