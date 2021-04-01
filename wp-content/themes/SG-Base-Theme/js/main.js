@@ -83,10 +83,15 @@ let bodyElement = document.querySelector('body');
 // Get the modal
 let modalNewCx = document.getElementById('myModal--new-cx');
 let modalExistingCx = document.getElementById('myModal--existing-cx');
+let modalProduct = document.querySelector('.modal-product');
+let modalForm = document.querySelector('.modal-form');
+
 
 // Get the button that opens the modal
 let newBtn = document.getElementById('myBtn--new-cx');
 let existingBtn = document.getElementById('myBtn--existing-cx');
+let btnModalProduct = document.querySelectorAll('.btn-modal-product');
+let btnModalForm = document.querySelectorAll('.btn-modal-form');
 
 // Get the <span> element that closes the modal
 let span = document.querySelectorAll('.close');
@@ -103,6 +108,7 @@ if (newBtn) {
   });
 }
 
+
 if (existingBtn) {
   existingBtn.addEventListener('click', () => {
     modalExistingCx.style.display = 'flex';
@@ -115,6 +121,47 @@ if (existingBtn) {
   });
 }
 
+$(btnModalProduct).each(function(i,elem) {
+	elem.addEventListener('click', () => {
+    modalProduct.style.display = 'flex';
+    bodyElement.style.position = 'fixed';
+
+    span[0].onclick = function () {
+      modalProduct.style.display = 'none';
+      bodyElement.style.position = 'initial';
+      // $(this).childred('.modal-inner').html('')
+      $('.modal-product .modal-inner').html('')
+    };
+  });
+});
+
+$(btnModalForm).each(function(i,elem) {
+	elem.addEventListener('click', () => {
+    modalForm.style.display = 'flex';
+    bodyElement.style.position = 'fixed';
+
+    span[1].onclick = function () {
+      modalForm.style.display = 'none';
+      bodyElement.style.position = 'initial';
+      $(this).children('.modal-inner').html('')
+    };
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.onclick = function (event) {
   if (event.target === modalNewCx) {
     modalNewCx.style.display = 'none';
@@ -124,7 +171,32 @@ window.onclick = function (event) {
     modalExistingCx.style.display = 'none';
     bodyElement.style.position = 'initial';
   }
+  if (event.target === modalProduct) {
+    modalProduct.style.display = 'none';
+    bodyElement.style.position = 'initial';
+    $('.modal-product .modal-inner').html('')
+  }
+  if (event.target === modalForm) {
+    modalForm.style.display = 'none';
+    bodyElement.style.position = 'initial';
+
+  }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* *************** */
 /* *************** */

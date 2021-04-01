@@ -14,7 +14,11 @@
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="stylesheet" href="<?php echo $dir.'/style.css?v='.time(); ?>">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" href="<?php echo $dir; ?>/css/swipeks.css">
+
+  <?php if( !is_single() ){ ?>
+    <link rel="stylesheet" href="<?php echo $dir; ?>/css/swipeks.css">
+  <?php } ?>
+
   <?php if(get_theme_mod('base_color') == "sg"){ ?>
     <link rel="stylesheet" href="<?php echo $dir.'/css/green.css?v='.time(); ?>">
   <?php }elseif(get_theme_mod('base_color') == "sp"){ ?>

@@ -8,6 +8,13 @@ function cptui_register_my_taxes() {
 $labels = [
     "name" => __( "Locations", "simplygroup" ),
     "singular_name" => __( "Location", "simplygroup" ),
+    "all_items" => __( "ALL", "simplygroup" ),
+    "edit_item" => __( "Edit", "simplygroup" ),
+    "view_item" => __( "View", "simplygroup" ),
+    "update_item" => __( "Update", "simplygroup" ),
+    "add_new_item" => __( "Add New", "simplygroup" ),
+    "new_item_name" => __( "New Item", "simplygroup" ),
+    "search_items" => __( "Search", "simplygroup" ),
 ];
 
 $args = [
@@ -36,6 +43,13 @@ register_taxonomy( "product_location", [ "products" ], $args );
 $labels = [
     "name" => __( "Sizes", "simplygroup" ),
     "singular_name" => __( "Size", "simplygroup" ),
+    "all_items" => __( "ALL", "simplygroup" ),
+    "edit_item" => __( "Edit", "simplygroup" ),
+    "view_item" => __( "View", "simplygroup" ),
+    "update_item" => __( "Update", "simplygroup" ),
+    "add_new_item" => __( "Add New", "simplygroup" ),
+    "new_item_name" => __( "New Item", "simplygroup" ),
+    "search_items" => __( "Search", "simplygroup" ),
 ];
 
 $args = [
@@ -64,6 +78,13 @@ register_taxonomy( "product_size", [ "products" ], $args );
 $labels = [
     "name" => __( "Brands", "simplygroup" ),
     "singular_name" => __( "brand", "simplygroup" ),
+    "all_items" => __( "ALL", "simplygroup" ),
+    "edit_item" => __( "Edit", "simplygroup" ),
+    "view_item" => __( "View", "simplygroup" ),
+    "update_item" => __( "Update", "simplygroup" ),
+    "add_new_item" => __( "Add New", "simplygroup" ),
+    "new_item_name" => __( "New Item", "simplygroup" ),
+    "search_items" => __( "Search", "simplygroup" ),
 ];
 
 $args = [
@@ -92,6 +113,13 @@ register_taxonomy( "product_brand", [ "products" ], $args );
 $labels = [
     "name" => __( "Products", "simplygroup" ),
     "singular_name" => __( "Product", "simplygroup" ),
+    "all_items" => __( "ALL", "simplygroup" ),
+    "edit_item" => __( "Edit", "simplygroup" ),
+    "view_item" => __( "View", "simplygroup" ),
+    "update_item" => __( "Update", "simplygroup" ),
+    "add_new_item" => __( "Add New", "simplygroup" ),
+    "new_item_name" => __( "New Item", "simplygroup" ),
+    "search_items" => __( "Search", "simplygroup" ),
 ];
 
 $args = [
@@ -115,4 +143,4 @@ register_taxonomy( "product_model", [ "products" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes' );
 
-
+?>

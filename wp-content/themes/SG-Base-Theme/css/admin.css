@@ -819,3 +819,29 @@ section .inner-box {
 li.acf-fr{
   display: none;
 }
+
+select#newproduct_brand_parent , 
+select#newproduct_location_parent ,
+select#newproduct_model_parent ,
+select#newproduct_size_parent{
+  display: none!important;
+}
+
+.post-type-products .term-parent-wrap{
+  display: none!important;
+}
+
+
+.post-type-sizes .term-parent-wrap{
+  display: none!important;
+}
+
+
+.post-type-brands .term-parent-wrap{
+  display: none!important;
+}
+
+
+.post-type-locations .term-parent-wrap{
+  display: none!important;
+}

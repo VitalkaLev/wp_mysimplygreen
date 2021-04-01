@@ -2,49 +2,143 @@
     $dir = "/wp-content/themes/SG-Base-Theme";
 ?>
 
-
-
 <section class="category-list <?php block_field('default-section');?>">
     <div class="inner-box">
         <div class="category-head">
             <div class="category-head__info">
-                <h2>Our Products</h2>
-                <span>Filter products by: </span>
+                <?php if( get_field('acf_filter_name_title', 'option') ){ ?>
+                    <h2><?php echo get_field('acf_filter_name_title', 'option'); ?></h2>
+                <?php } ?>
+
+                <?php if( get_field('acf_filter_name_subtitle', 'option') ){ ?>
+                    <span>
+                        <?php echo get_field('acf_filter_name_subtitle', 'option'); ?>
+                    </span>
+                <?php } ?>
             </div>
             <div class="current-location">
                 <div class="current-location__ico">
                     <i class="fas fa-location-arrow"></i>
                 </div>
                 <div class="current-location__info">
-                    <span class="current-location__name"> Select location </span>
+                    <span class="current-location__name"></span>
                     <button type="button" id="current-location__button" class="current-location__button">
-                        <span class="current-location__button-txt">Change ›</span>
+                            <span class="current-location__button-txt">Change ›</span> 
                     </button>
                 </div>
             </div>
         </div>
+
         <nav id="tab-block-links" class="category-list__nav">
-            <ul class="category-list__list">
-                <li id="heating" class="category-list__item"><a class="category-list__link" href="/heating-products/">Heating</a></li>
-                <li id="cooling" class="category-list__item"><a class="category-list__link" href="/cooling-products/">Cooling</a></li>
-                <li id="air-filtration" class="category-list__item"><a class="category-list__link" href="/air-filtration-products/">Air Filtration</a></li>
-                <li id="water-heating" class="category-list__item"><a class="category-list__link" href="/water-heating-products/">Water Heating</a></li>
-                <li id="water-treatment" class="category-list__item"><a class="category-list__link" href="/water-treatment-products/">Water Treatment</a></li>
+            <ul class="category-list__list category-list__list--mobile">
+                <li id="heating" class="category-list__item <?php if( block_field('default-section', false ) === 'heating' ){ echo "active"; } ?>">
+                    <a class="category-list__link" href="/heating-products/">Heating</a>
+                    
+                    <?php if(  block_field('default-section', false ) === 'heating' ){ ?>
+                        <div class="category-list__item-mobile-wrap">
+                            <?php if( wp_is_mobile() ){ ?>
+                                <form action="/" class="category-filter__body " id="accordion-panel-1" aria-labelledby="accordion-header-1" >
+                                    <button type="reset" class="category-filter__all">View all Heating</button>
+                                    
+                                    <?php get_template_part('/blocks/swipeks-mobile-filters'); ?>
+
+                                    <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
+                                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
+                                    </div>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </li>
+                <li id="cooling" class="category-list__item <?php if( block_field('default-section', false ) === 'cooling' ){ echo "active"; } ?>">
+                    <a class="category-list__link" href="/cooling-products/">Cooling</a>
+                    <?php if(  block_field('default-section', false ) === 'cooling' ){ ?>
+                        <div class="category-list__item-mobile-wrap">
+                            <?php if( wp_is_mobile() ){ ?>
+                                <form action="/" class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" >
+                                    <button type="reset" class="category-filter__all">View all Cooling</button>
+                                    
+                                    <?php get_template_part('/blocks/swipeks-mobile-filters'); ?>
+
+                                    <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
+                                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
+                                    </div>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </li>
+                <li id="air-filtration" class="category-list__item <?php if( block_field('default-section', false ) === 'air-filtration' ){ echo "active"; } ?>">
+                    <a class="category-list__link" href="/air-filtration-products/">AirFiltration</a>
+                    <?php if(  block_field('default-section', false ) === 'air-filtration' ){ ?>
+                        <div class="category-list__item-mobile-wrap">
+                            <?php if( wp_is_mobile() ){ ?>
+                                <form action="/" class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" >
+                                    <button type="reset" class="category-filter__all">View all AirFiltration</button>
+                                    
+                                    <?php get_template_part('/blocks/swipeks-mobile-filters'); ?>
+
+                                    <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
+                                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
+                                    </div>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </li>
+                <li id="water-heating" class="category-list__item <?php if( block_field('default-section', false ) === 'water-heating' ){ echo "active"; } ?>">
+                    <a class="category-list__link" href="/water-heating-products/">Water Heating</a>
+                    <?php if(  block_field('default-section', false ) === 'water-heating' ){ ?>
+                        <div class="category-list__item-mobile-wrap">
+                            <?php if( wp_is_mobile() ){ ?>
+                                <form action="/" class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" >
+                                    <button type="reset" class="category-filter__all">View all Water Heating</button>
+                                    
+                                    <?php get_template_part('/blocks/swipeks-mobile-filters'); ?>
+
+                                    <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
+                                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
+                                    </div>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </li>
+                <li id="water-treatment" class="category-list__item <?php if(  block_field('default-section', false ) === 'water-treatment' ){ echo "active"; } ?>">
+                    <a class="category-list__link" href="/water-treatment-products/">Water Treatment</a>
+                    <?php if(  block_field('default-section', false ) === 'water-treatment' ){ ?>
+                        <div class="category-list__item-mobile-wrap">
+                            <?php if( wp_is_mobile() ){ ?>
+                                <form action="/" class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" >
+                                    <button type="reset" class="category-filter__all">View all Water Treatment</button>
+
+                                     <?php get_template_part('/blocks/swipeks-mobile-filters'); ?>
+
+                                    <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
+                                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
+                                    </div>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+                </li>
             </ul>
-            <div class="category-filter">
+            <?php if( !wp_is_mobile()){ ?>      
+            <div class="category-filter category-filter--desktop">
                 <h3 class="category-filter__action">
                     <button class="category-filter__btn" id="accordion-header-1" aria-expanded="false" aria-controls="accordion-panel-1" data-accordion> Show Filters 
-                        <img src="<?php echo $dir; ?>/images/SVG/arrow.svg" alt="">
+                        <img src="<?php echo $dir; ?>/images/SVG/arrow.svg" alt="filter">
                     </button>
                 </h3>
-                <div class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" hidden>
+                
+                <form action="/" class="category-filter__body" id="accordion-panel-1" aria-labelledby="accordion-header-1" hidden>
                     <div class="category-filter__list">
                         <div class="category-filter__group category-filter-group category-filter-group--product">
-                            <span class="category-filter-group__title">Product</span>
+                            <span class="category-filter-group__title"><?php echo get_field('acf_filter_name_product', 'option'); ?></span>
                             <ul class="category-filter-group__list">
                                 <?php 
                                     $models = get_list_tax('product_model');
-                                 
+                                
                                     if( $models ){
                                         foreach ( $models as $model_index => $model ) { ?>
 
@@ -64,7 +158,7 @@
                             </ul>
                         </div>
                         <div class="category-filter__group category-filter-group category-filter-group--brand">
-                            <span class="category-filter-group__title">Brand</span>
+                            <span class="category-filter-group__title"><?php echo get_field('acf_filter_name_brand', 'option'); ?></span>
                             <ul class="category-filter-group__list">
                                 <?php 
                                     $brands = get_list_tax('product_brand');
@@ -88,11 +182,11 @@
                             </ul>
                         </div>
                         <div class="category-filter__group category-filter-group category-filter-group--location">
-                            <span class="category-filter-group__title">Location</span>
+                            <span class="category-filter-group__title"><?php echo get_field('acf_filter_name_location', 'option'); ?></span>
                             <ul class="category-filter-group__list">
                                 <?php 
                                     $locations = get_list_tax('product_location');
-                              
+                            
                                     if( $locations ){
                                         foreach ( $locations as $location_index => $location ) { ?>
 
@@ -112,7 +206,7 @@
                             </ul>
                         </div>
                         <div class="category-filter__group category-filter-group category-filter-group--size">
-                            <span class="category-filter-group__title">Home Size</span>
+                            <span class="category-filter-group__title"><?php echo get_field('acf_filter_name_size', 'option'); ?></span>
                             <ul class="category-filter-group__list">
                                 <?php 
                                     $sizes = get_list_tax('product_size');
@@ -136,11 +230,12 @@
                         </div>
                     </div>
                     <div class="category-filter__submit" data-category=<?php block_field('default-section');?>>
-                        <button>Apply</button>
+                        <button type="button"><?php echo get_field('acf_filter_name_btn_submit', 'option'); ?></button>
                     </div>
+                </form>
 
-                </div>
             </div>
+            <?php } ?>
         </nav>
         <div class="product-grid product-ajax">
             <?php  
@@ -169,28 +264,38 @@
                         <div class="item__logo">
                             <picture>
                                 <source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
-                                <img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="описание" />
+                                <img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="brand" />
                             </picture>
                         </div>
                         <div class="item__hero">
                             <div class="item__title">
-                                <span><?php the_title(); ?></span>
+                                <span><?php echo get_the_title($product_post->ID); ?></span>
                             </div>
-                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">
-                                <?php echo get_field('acf_product_brand_name', $product_post->ID); ?>
-                            </a>
+                            <?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
+                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">
+                                    <?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
+                                </a>
+                            <?php } ?>
                             <div class="item__characteristics">
                                 <div class="item__characteristic ">
                                     <span><?php echo get_field('acf_product_btu', $product_post->ID); ?></span>
-                                    <span>BTU</span>
+                                    
+                                    <?php if( get_field('acf_filter_name_btu', 'option') ){ ?>
+                                        <span><?php echo get_field('acf_filter_name_btu', 'option'); ?></span>
+                                    <?php } ?>
                                 </div>
                                 <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_rating', $product_post->ID); ?></span>
-                                    <span>Efficiency Rating</span>
+                                    <span><?php echo get_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                   
+                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
+                                        <span><?php echo get_field('acf_filter_name_rating', 'option'); ?></span>
+                                    <?php } ?>
                                 </div>
                                 <div class="item__characteristic">
                                     <span><?php echo get_field('acf_product_size', $product_post->ID); ?></span>
-                                    <span>Size</span>
+                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
+                                        <span><?php echo get_field('acf_filter_name_size', 'option'); ?></span>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="item__slider">
@@ -198,56 +303,72 @@
 
                                     $gallery = get_field('acf_product_gallery', $product_post->ID);
 
-                                    if( $gallery ): ?>
+                                    if( $gallery ){ ?>
                                     
                                         <?php foreach( $gallery as $gallery_item ): ?>
-                                            <?php if( !empty($gallery_item) ){ ?>
+                                           
                                                 <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
                                                     <picture class="h-object-fit">
                                                         <source srcset="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" media="(max-width: 560px) ">
                                                         <img src="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" alt="описание" />
                                                     </picture>
                                                 </a>
-                                            <?php } else { ?>
-                                                <a  href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
-                                                    <picture class="h-object-fit">
-                                                        <source srcset="<?php echo $dir; ?>/placeholder.png" media="(max-width: 560px) ">
-                                                        <img src="<?php echo $dir; ?>/placeholder.png" alt="описание" />
-                                                    </picture>
-                                                </a>
-                                            <?php } ?>
-
-                                              
                                         <?php endforeach; ?>
                                     
-                                    <?php endif; ?>
+                                    <?php } else { ?>
+
+                                        <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                            <picture class="h-object-fit">
+                                                <source srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" media="(max-width: 560px) ">
+                                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" alt="product" />
+                                            </picture>
+                                        </a>
+
+                                    <?php } ?>
                             
                             </div>
-                            <div class="item__recommend">
+                            
                                 <?php if( has_excerpt($product_post->ID) ){ ?>
-                                    <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                                    <div class="item__recommend">
+                                        <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                                    </div>
                                 <?php } ?>
-                            </div>
-                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">Learn more</a>
+                            
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_filter_name_link', 'option'); ?></a>
                         </div>
                         <div class="item__info">
-                            <div class="item__desc">
-                                <?php echo get_field('acf_product_info', $product_post->ID); ?>
-                            </div>
+                            <?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
+                                <div class="item__desc">
+                                    <?php echo get_field('acf_product_info', $product_post->ID); ?>
+                                </div>
+                            <?php } ?>
                             <div class="item__rate-price">
-                                <div class="item__rate">
-                                    <div class="item__rate-stars">
-                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
-                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
-                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
-                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
-                                        <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                <?php if( get_field('acf_product_rating', $product_post->ID) ){ ?>
+                                    <div class="item__rate">
+                                        <div class="item__rate-stars">
+                                           
+                                            <?php $ratings = get_field('acf_product_rating', $product_post->ID);  
+
+                                                $stars = calculateStarRating($ratings);
+
+                                                for ($i = 0; $i < $stars; ++$i) { ?>
+                                                    <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                                <?php } 
+
+                                            ?>
+                                         
+                                        </div>
+                                        <?php if( get_field('acf_product_text_google_rating', 'option') ){ ?>
+                                            <span><?php echo get_field('acf_product_text_google_rating', 'option'); ?></span>
+                                        <?php } ?>
                                     </div>
-                                    <span>Google Rating</span>
-                                </div>
-                                <div class="item__price">
-                                    <span>Relative Price: <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
-                                </div>
+                                <?php } ?>
+
+                                <?php if( get_field('acf_product_price', $product_post->ID) ){ ?>
+                                    <div class="item__price">
+                                        <span><?php echo get_field('acf_product_text_price', 'option'); ?> <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
+                                    </div>
+                                <?php } ?>
                             </div>
                             <div class="item__offer-txt">
                                 
@@ -265,28 +386,21 @@
                                     </ul>
                                 <?php endif; ?>
 
+                                <?php if( get_field('acf_product_offer_text', $product_post->ID) ){ ?>
+                                    <div class="item__txt">
+                                        <span>
+                                            <?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
+                                        </span>
+                                    </div>
+                                <?php } ?>
 
-                                <div class="item__txt">
-                                    <span>
-                                        <?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
-                                    </span>
-                                </div>
                             </div>
                             <div class="item__links">
-                                <button id="#modal-product-<?php echo $product_post->ID ?>" class="button">Benefits of leasing</button>
-                                <button id="#modal-product-form" class="button">Speak to a home specialist </button>
+                                <button  class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
+                                <button class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
                             </div>
                         </div>
-                        <div id="modal-product-<?php echo $product_post->ID ?>" class="modal" aria-modal="true" role="dialog">
-                            <div class="modal-content">
-                                <span class="close">
-                                    <button class="btn--no-style" style="border: none !important">×</button>
-                                </span>
-                                <div class="modal-inner">
-                                    <?php echo get_field('acf_product_modal', $product_post->ID); ?>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                 <?php }
@@ -294,15 +408,28 @@
                 wp_reset_postdata(); ?>
         </div>
     </div>
-    <div id="modal-product-form" class="modal" role="dialog">
+    <div class="modal modal-product" aria-modal="true" role="dialog">
         <div class="modal-content">
             <span class="close">
                 <button class="btn--no-style" style="border: none !important">×</button>
             </span>
             <div class="modal-inner">
-                form
+            
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-form" aria-modal="true" role="dialog">
+        <div class="modal-content">
+            <span class="close">
+                <button class="btn--no-style" style="border: none !important">×</button>
+            </span>
+            <div class="modal-inner">
+                <?php get_template_part('blocks/swipeks-modal-form');?>
             </div>
         </div>
     </div>
 </section>
 
+
+
+                          
