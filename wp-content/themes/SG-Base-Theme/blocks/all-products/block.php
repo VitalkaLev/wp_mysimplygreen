@@ -21,10 +21,38 @@
                     <i class="fas fa-location-arrow"></i>
                 </div>
                 <div class="current-location__info">
-                    <span class="current-location__name"></span>
-                    <button type="button" id="current-location__button" class="current-location__button">
-                            <span class="current-location__button-txt">Change ›</span> 
-                    </button>
+                    
+                    <span class="current-location__name"><?php echo $get_location = get_city(); ?></span>
+                    <h3>
+                        <button type="button" id="current-location__button accordion-header-2" class="current-location__button" aria-expanded="false" aria-controls="accordion-panel-2" data-accordion>
+                                <span class="current-location__button-txt">Change ›</span> 
+                        </button>
+                    </h3>
+                    <ul class="current-location__list" hidden aria-labelledby="accordion-header-2" id="accordion-panel-2">
+                        <?php 
+                            $locations_args = array(
+                            'post_type' => 'list_location',
+                            'posts_per_page' => -1,
+                            'post_status' => 'publish',
+                        );
+
+                        $locations = get_posts( $locations_args );
+
+                        
+                        if ( $locations ) { 
+                            foreach( $locations as $location ) { ?>
+
+                                <li class="current-location__item">
+                                    <button value="<?php echo get_the_title($location->ID); ?>" data-category="<?php block_field('default-section');?>">
+                                        <?php echo get_the_title($location->ID); ?>
+                                    </button>
+                                </li>
+                            <?php } 
+                        }  ?>
+                      
+                        
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -242,6 +270,7 @@
              
                 $product_cat = block_field('default-section', false);  
 
+
                 $product_args = array(
                     'post_type' => 'products',
                     'posts_per_page' => -1,
@@ -252,12 +281,18 @@
                             'field'    => 'slug',
                             'terms'    =>  $product_cat,
                         ),
+                        array(
+                            'taxonomy' => 'product_location',
+                            'field' => 'name',
+                            'terms'	  	=> $get_location ,
+                            'relation'	=> 'AND',
+                        ),
                     ),
                 );
 
                 $product_loop = get_posts( $product_args );
 
-                if ( $product_loop ) : 
+                if ( $product_loop ) {
                     foreach( $product_loop as $product_post ) { ?>
 
                     <div class="item">
@@ -272,48 +307,50 @@
                                 <span><?php echo get_the_title($product_post->ID); ?></span>
                             </div>
                             <?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
-                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">
+                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__subtitle">
                                     <?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
                                 </a>
                             <?php } ?>
-                            <div class="item__characteristics">
-                                <div class="item__characteristic ">
-                                    <span><?php echo get_field('acf_product_btu', $product_post->ID); ?></span>
-                                    
-                                    <?php if( get_field('acf_filter_name_btu', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_btu', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_rating', $product_post->ID); ?>%</span>
-                                   
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_rating', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_size', $product_post->ID); ?></span>
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_size', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                            </div>
+                           
                             <div class="item__slider">
                                 <?php 
-
-                                    $gallery = get_field('acf_product_gallery', $product_post->ID);
-
-                                    if( $gallery ){ ?>
-                                    
-                                        <?php foreach( $gallery as $gallery_item ): ?>
+                                    if( have_rows('acf_product_slider', $product_post->ID) ){
+                                        while( have_rows('acf_product_slider', $product_post->ID) ) { the_row(); ?>
                                            
-                                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                            <div class="item__slide">  
+                                                <div class="item__characteristics">
+                                                    <div class="item__characteristic ">
+                                                        <span><?php echo get_sub_field('acf_product_btu', $product_post->ID); ?></span>
+                                                        
+                                                        <?php if( get_field('acf_product_text_btu', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_btu', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                                    
+                                                        <?php if( get_field('acf_product_text_rating', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_rating', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_size', $product_post->ID); ?></span>
+
+                                                        <?php if( get_field('acf_product_text_size', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_size', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div> 
+
+                                                <a href="<?php the_permalink($product_post->ID); ?>">   
                                                     <picture class="h-object-fit">
-                                                        <source srcset="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" media="(max-width: 560px) ">
-                                                        <img src="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" alt="описание" />
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" alt="описание" />
                                                     </picture>
                                                 </a>
-                                        <?php endforeach; ?>
+                                            </div>
+
+                                        <?php } ?>
                                     
                                     <?php } else { ?>
 
@@ -334,7 +371,7 @@
                                     </div>
                                 <?php } ?>
                             
-                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_filter_name_link', 'option'); ?></a>
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_product_text_link', 'option'); ?></a>
                         </div>
                         <div class="item__info">
                             <?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
@@ -372,9 +409,9 @@
                             </div>
                             <div class="item__offer-txt">
                                 
-                                <?php if( have_rows('acf_product_offer') ): ?>
+                                <?php if( have_rows('acf_product_offer', $product_post->ID) ): ?>
                                     <ul class="item__offer-list ">
-                                        <?php while( have_rows('acf_product_offer') ): the_row(); ?>
+                                        <?php while( have_rows('acf_product_offer', $product_post->ID) ): the_row(); ?>
 
                                             <li>
                                                 <i class="fas fa-check-circle"></i>
@@ -396,22 +433,27 @@
 
                             </div>
                             <div class="item__links">
-                                <button  class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
-                                <button class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
+                                <button type="button" class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
+                                <button type="button" class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
                             </div>
                         </div>
                         
                     </div>
 
                 <?php }
-                endif; 
+                } else { ?>
+                    
+                    <h2>
+                        No products were found at this location! Please change the location!!
+                    </h2>
+                <?php }
                 wp_reset_postdata(); ?>
         </div>
     </div>
     <div class="modal modal-product" aria-modal="true" role="dialog">
         <div class="modal-content">
             <span class="close">
-                <button class="btn--no-style" style="border: none !important">×</button>
+                <button type="button" class="btn--no-style" style="border: none !important">×</button>
             </span>
             <div class="modal-inner">
             
@@ -421,7 +463,7 @@
     <div class="modal modal-form" aria-modal="true" role="dialog">
         <div class="modal-content">
             <span class="close">
-                <button class="btn--no-style" style="border: none !important">×</button>
+                <button type="button" class="btn--no-style" style="border: none !important">×</button>
             </span>
             <div class="modal-inner">
                 <?php get_template_part('blocks/swipeks-modal-form');?>

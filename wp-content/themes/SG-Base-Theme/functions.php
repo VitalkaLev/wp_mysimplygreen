@@ -4,661 +4,7 @@
 	});
 
 
-	define( 'MY_ACF_PATH', get_stylesheet_directory() . '/includes/acf/' );
-	define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/includes/acf/' );
 	
-	include_once( MY_ACF_PATH . 'acf.php' );
-	
-	add_filter('acf/settings/url', 'my_acf_settings_url');
-	function my_acf_settings_url( $url ) {
-		return MY_ACF_URL;
-	}
-	
-	add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-	function my_acf_settings_show_admin( $show_admin ) {
-		return false;
-	}
-	
-	// Admin fields to product
-	add_action( 'acf/register_fields', 'my_function_to_add_field_groups' );
-	function my_function_to_add_field_groups() {
-
-		if( function_exists('acf_add_local_field_group') ):
-
-			acf_add_local_field_group(array(
-				'key' => 'group_6058dfcca25f5',
-				'title' => 'Product Informations - left column',
-				'fields' => array(
-					array(
-						'key' => 'field_6058e2c565488',
-						'label' => 'Short Content',
-						'name' => 'acf_product_info',
-						'type' => 'wysiwyg',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '<p><strong><span style="color: #56a63f;">Lots of Warmth, Less Energy Wasted</span></strong><br>
-			Brand Is Known For:<br>
-			Lennox furnaces are some of the most efficient and<br>
-			quietest heating systems you can buy*. They’re<br>
-			engineered for perfect warmth and savings.</p>
-			<p><strong>Our Expert Advice:</strong><br>
-			If you’re looking to buy vs lease, we recommend Lennox<br>
-			furnaces because they have a long history of building<br>
-			high-quality, long-lasting equipment.</p>
-			high-quality, long-lasting equipment.</p>',
-						'tabs' => 'all',
-						'toolbar' => 'full',
-						'media_upload' => 1,
-						'delay' => 0,
-					),
-					array(
-						'key' => 'field_6059db1ad5644',
-						'label' => 'Offer Text',
-						'name' => 'acf_product_offer_text',
-						'type' => 'textarea',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Cash pricing and maintenance
-			and protection plans also
-			available.',
-						'placeholder' => '',
-						'maxlength' => '',
-						'rows' => '',
-						'new_lines' => 'br',
-					),
-					array(
-						'key' => 'field_6058e33e0fd81',
-						'label' => 'Offer List',
-						'name' => 'acf_product_offer',
-						'type' => 'repeater',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'collapsed' => 'field_6058e3680fd82',
-						'min' => 0,
-						'max' => 0,
-						'layout' => 'block',
-						'button_label' => 'Add item',
-						'sub_fields' => array(
-							array(
-								'key' => 'field_6058e3680fd82',
-								'label' => 'Content',
-								'name' => 'acf_product_offer_content',
-								'type' => 'text',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'default_value' => '$0 upfront costs',
-								'placeholder' => 'Content',
-								'prepend' => '',
-								'append' => '',
-								'maxlength' => '',
-							),
-						),
-					),
-					array(
-						'key' => 'field_6059dae5d5643',
-						'label' => 'Modal Content',
-						'name' => 'acf_product_modal',
-						'type' => 'wysiwyg',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'tabs' => 'all',
-						'toolbar' => 'full',
-						'media_upload' => 1,
-						'delay' => 0,
-					),
-				),
-				'location' => array(
-					array(
-						array(
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => 'products',
-						),
-					),
-				),
-				'menu_order' => 0,
-				'position' => 'normal',
-				'style' => 'default',
-				'label_placement' => 'top',
-				'instruction_placement' => 'label',
-				'hide_on_screen' => '',
-				'active' => true,
-				'description' => '',
-			));
-			
-			acf_add_local_field_group(array(
-				'key' => 'group_6058e50a791e2',
-				'title' => 'Product Informations - right column',
-				'fields' => array(
-					array(
-						'key' => 'field_6059da89fa5fa',
-						'label' => 'Brand (logo)',
-						'name' => 'acf_product_brand_logo',
-						'type' => 'image',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'return_format' => 'id',
-						'preview_size' => 'thumbnail',
-						'library' => 'all',
-						'min_width' => '',
-						'min_height' => '',
-						'min_size' => '',
-						'max_width' => '',
-						'max_height' => '',
-						'max_size' => '',
-						'mime_types' => '',
-					),
-					array(
-						'key' => 'field_6059da5afa5f9',
-						'label' => 'Brand (model)',
-						'name' => 'acf_product_brand_model',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'KeepRite Furnace',
-						'placeholder' => 'Brand (name)',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6058e50aa4024',
-						'label' => 'Price',
-						'name' => 'acf_product_price',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '$$$',
-						'placeholder' => 'Price',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6058e50aa3859',
-						'label' => 'Btu',
-						'name' => 'acf_product_btu',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 45,
-						'placeholder' => 'Btu',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6058e50aa3c45',
-						'label' => 'Rating',
-						'name' => 'acf_product_rating',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 96,
-						'placeholder' => 'Rating',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6058e50aa30a6',
-						'label' => 'Gallery',
-						'name' => 'acf_product_gallery',
-						'type' => 'gallery',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'return_format' => 'id',
-						'preview_size' => 'medium',
-						'insert' => 'append',
-						'library' => 'all',
-						'min' => '',
-						'max' => '',
-						'min_width' => '',
-						'min_height' => '',
-						'min_size' => '',
-						'max_width' => '',
-						'max_height' => '',
-						'max_size' => '',
-						'mime_types' => '',
-					),
-				),
-				'location' => array(
-					array(
-						array(
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => 'products',
-						),
-					),
-				),
-				'menu_order' => 0,
-				'position' => 'side',
-				'style' => 'default',
-				'label_placement' => 'top',
-				'instruction_placement' => 'label',
-				'hide_on_screen' => '',
-				'active' => true,
-				'description' => '',
-			));
-			
-			acf_add_local_field_group(array(
-				'key' => 'group_60637eb5b83be',
-				'title' => 'Theme',
-				'fields' => array(
-					array(
-						'key' => 'field_6064e5e522c3f',
-						'label' => 'Text',
-						'name' => 'acf_filter_name_title',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Our Products',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e62d22c41',
-						'label' => 'Text',
-						'name' => 'acf_filter_name_subtitle',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Filter products by:',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e65a22c42',
-						'label' => 'Button Filter',
-						'name' => 'acf_filter_name_btn_filter',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Show Filters',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e69122c43',
-						'label' => 'Button Filter',
-						'name' => 'acf_filter_name_btn_submit',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Apply',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e6c922c44',
-						'label' => 'Filter Text',
-						'name' => 'acf_filter_name_size',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Home Size',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e6f322c45',
-						'label' => 'Filter Text',
-						'name' => 'acf_filter_name_location',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Location',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e70522c46',
-						'label' => 'Filter Text',
-						'name' => 'acf_filter_name_brand',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Brand',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e72222c48',
-						'label' => 'Product',
-						'name' => 'acf_filter_name_product',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Product',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e75722c49',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_btu',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'BTU',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e77522c4a',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_rating',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Efficiency Rating',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e79822c4b',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_size',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Size',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e7cc22c4c',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_link',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Learn more',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e7f622c4d',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_google_rating',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Google Rating',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e81722c4e',
-						'label' => 'Product Text',
-						'name' => 'acf_product_text_price',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Relative Price:',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e83722c4f',
-						'label' => 'Button Text',
-						'name' => 'acf_product_text_btn_benefits',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Benefits of leasing',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e85b22c50',
-						'label' => 'Button Text',
-						'name' => 'acf_product_text_btn_speak',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Speak to a home specialist',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-					array(
-						'key' => 'field_6064e93022c51',
-						'label' => 'Button Text',
-						'name' => 'acf_product_text_btn_load',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 'Load more',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-				),
-				'location' => array(
-					array(
-						array(
-							'param' => 'options_page',
-							'operator' => '==',
-							'value' => 'theme-general-settings',
-						),
-					),
-				),
-				'menu_order' => 0,
-				'position' => 'normal',
-				'style' => 'default',
-				'label_placement' => 'top',
-				'instruction_placement' => 'label',
-				'hide_on_screen' => '',
-				'active' => true,
-				'description' => '',
-			));
-			
-		endif;
-
-	}
-
 
   	function dd( $data ){
 		echo '<pre>';
@@ -674,7 +20,410 @@
 			//echo esc_html( $category->cat_name ).', ';	
 		}
 	}
+
+
+	function get_city(){
+
+		$request = wp_remote_get( 'http://ip-api.com/json' );
+
+		$body = wp_remote_retrieve_body( $request );
+
+		$data = json_decode( $body );
+
+		$city = $data->city;
+
+
+		if( is_wp_error( $city ) ) {
+			
+			return false; 
+
+		} else{
+
+			return $city;
+
+		}
+
+	}
+
+
+
+
+
+	// Location AJAX
+	add_action( 'wp_ajax_nopriv_load-location', 'get_product_location_ajax' );
+	add_action( 'wp_ajax_load-location', 'get_product_location_ajax' );
+
+	function get_product_location_ajax(){
+
+		$dir = "/wp-content/themes/SG-Base-Theme";
+
+		$product_category = $_POST['product_category'];
+
+		if( !empty($_POST['get_location'])  ){
+			$get_location = $_POST['get_location'];
+		} 
+
+		$product_args = array(
+			'post_type' => 'products',
+			'numberposts'   => -1,          
+			'post_status'   => 'publish',
+			'orderby' => 'name',
+			'order' => 'ASC',
+			'tax_query'	=> array(
+				'relation'		=> 'OR',
+				array(
+					'taxonomy' => 'product_location',
+					'field' => 'name',
+					'terms'	  	=> $get_location ,
+					'relation'	=> 'AND',
+				),
+			),
+		);
+
+		$product_posts = get_posts( $product_args );
+		// dd( $product_posts );
+		ob_start ();
 	
+		if ( !empty($product_posts) ) {
+			foreach ( $product_posts as $product_post ) { setup_postdata( $product_post ); ?>
+
+                   <div class="item">
+                        <div class="item__logo">
+                            <picture>
+                                <source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
+                                <img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="brand" />
+                            </picture>
+                        </div>
+                        <div class="item__hero">
+                            <div class="item__title">
+                                <span><?php echo get_the_title($product_post->ID); ?></span>
+                            </div>
+                            <?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
+                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__subtitle">
+                                    <?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
+                                </a>
+                            <?php } ?>
+                            <div class="item__slider">
+                                <?php 
+                                    if( have_rows('acf_product_slider', $product_post->ID) ){
+                                        while( have_rows('acf_product_slider', $product_post->ID) ) { the_row(); ?>
+                                           
+                                            <div class="item__slide">  
+                                                <div class="item__characteristics">
+                                                    <div class="item__characteristic ">
+                                                        <span><?php echo get_sub_field('acf_product_btu', $product_post->ID); ?></span>
+                                                        
+                                                        <?php if( get_field('acf_product_text_btu', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_btu', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                                    
+                                                        <?php if( get_field('acf_product_text_rating', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_rating', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_size', $product_post->ID); ?></span>
+
+                                                        <?php if( get_field('acf_product_text_size', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_size', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div> 
+
+                                                <a href="<?php the_permalink($product_post->ID); ?>">   
+                                                    <picture class="h-object-fit">
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" alt="описание" />
+                                                    </picture>
+                                                </a>
+                                            </div>
+
+                                        <?php } ?>
+                                    
+                                    <?php } else { ?>
+
+                                        <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                            <picture class="h-object-fit">
+                                                <source srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" media="(max-width: 560px) ">
+                                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" alt="product" />
+                                            </picture>
+                                        </a>
+
+                                    <?php } ?>
+                            
+                            </div>
+                            
+                                <?php if( has_excerpt($product_post->ID) ){ ?>
+                                    <div class="item__recommend">
+                                        <span><?php echo get_the_excerpt($product_post->ID);?></span>
+                                    </div>
+                                <?php } ?>
+                            
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_product_text_link', 'option'); ?></a>
+                        </div>
+                        <div class="item__info">
+                            <?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
+                                <div class="item__desc">
+                                    <?php echo get_field('acf_product_info', $product_post->ID); ?>
+                                </div>
+                            <?php } ?>
+                            <div class="item__rate-price">
+                                <?php if( get_field('acf_product_rating', $product_post->ID) ){ ?>
+                                    <div class="item__rate">
+                                        <div class="item__rate-stars">
+                                           
+                                            <?php $ratings = get_field('acf_product_rating', $product_post->ID);  
+
+                                                $stars = calculateStarRating($ratings);
+
+                                                for ($i = 0; $i < $stars; ++$i) { ?>
+                                                    <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+                                                <?php } 
+
+                                            ?>
+                                         
+                                        </div>
+                                        <?php if( get_field('acf_product_text_google_rating', 'option') ){ ?>
+                                            <span><?php echo get_field('acf_product_text_google_rating', 'option'); ?></span>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+
+                                <?php if( get_field('acf_product_price', $product_post->ID) ){ ?>
+                                    <div class="item__price">
+                                        <span><?php echo get_field('acf_product_text_price', 'option'); ?> <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="item__offer-txt">
+                                
+                                <?php if( have_rows('acf_product_offer', $product_post->ID) ): ?>
+                                    <ul class="item__offer-list ">
+                                        <?php while( have_rows('acf_product_offer', $product_post->ID) ): the_row(); ?>
+
+                                            <li>
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>
+                                                    <?php echo get_sub_field('acf_product_offer_content', $product_post->ID); ?>
+                                                </span>
+                                            </li>
+                                        <?php endwhile; ?>
+                                    </ul>
+                                <?php endif; ?>
+
+                                <?php if( get_field('acf_product_offer_text', $product_post->ID) ){ ?>
+                                    <div class="item__txt">
+                                        <span>
+                                            <?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
+                                        </span>
+                                    </div>
+                                <?php } ?>
+
+                            </div>
+                            <div class="item__links">
+                                <button type="button" class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
+                                <button type="button" class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
+                            </div>
+                        </div>
+                    </div>
+
+			<?php } 
+		} else {
+				
+                $default_args = array(
+                    'post_type' => 'products',
+                    'posts_per_page' => -1,
+                    'post_status' => 'publish',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'category',
+                            'field'    => 'slug',
+                            'terms'    =>  $product_category,
+                        ),
+                    ),
+                );
+
+                $default_loop = get_posts( $default_args );
+
+                if ( $default_loop ) : 
+                    foreach( $default_loop as $product_post ) { ?>
+
+						<div class="item">
+							<div class="item__logo">
+								<picture>
+									<source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
+									<img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="brand" />
+								</picture>
+							</div>
+							<div class="item__hero">
+								<div class="item__title">
+									<span><?php echo get_the_title($product_post->ID); ?></span>
+								</div>
+								<?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
+									<a href="<?php the_permalink($product_post->ID); ?>" class="item__subtitle">
+										<?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
+									</a>
+								<?php } ?>
+									
+								<div class="item__slider">
+                                <?php 
+                                    if( have_rows('acf_product_slider', $product_post->ID) ){
+                                        while( have_rows('acf_product_slider', $product_post->ID) ) { the_row(); ?>
+                                           
+                                            <div class="item__slide">  
+                                                <div class="item__characteristics">
+                                                    <div class="item__characteristic ">
+                                                        <span><?php echo get_sub_field('acf_product_btu', $product_post->ID); ?></span>
+                                                        
+                                                        <?php if( get_field('acf_product_text_btu', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_btu', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                                    
+                                                        <?php if( get_field('acf_product_text_rating', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_rating', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_size', $product_post->ID); ?></span>
+
+                                                        <?php if( get_field('acf_product_text_size', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_size', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div> 
+
+                                                <a href="<?php the_permalink($product_post->ID); ?>">   
+                                                    <picture class="h-object-fit">
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" alt="описание" />
+                                                    </picture>
+                                                </a>
+                                            </div>
+
+                                        <?php } ?>
+                                    
+                                    <?php } else { ?>
+
+                                        <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                            <picture class="h-object-fit">
+                                                <source srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" media="(max-width: 560px) ">
+                                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" alt="product" />
+                                            </picture>
+                                        </a>
+
+                                    <?php } ?>
+                            
+                            </div>
+								
+								
+									<?php if( has_excerpt($product_post->ID) ){ ?>
+										<div class="item__recommend">
+											<span><?php echo get_the_excerpt($product_post->ID);?></span>
+										</div>
+									<?php } ?>
+								
+								<a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_product_text_link', 'option'); ?></a>
+							</div>
+							<div class="item__info">
+								<?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
+									<div class="item__desc">
+										<?php echo get_field('acf_product_info', $product_post->ID); ?>
+									</div>
+								<?php } ?>
+								<div class="item__rate-price">
+									<?php if( get_field('acf_product_rating', $product_post->ID) ){ ?>
+										<div class="item__rate">
+											<div class="item__rate-stars">
+											
+												<?php $ratings = get_field('acf_product_rating', $product_post->ID);  
+
+													$stars = calculateStarRating($ratings);
+
+													for ($i = 0; $i < $stars; ++$i) { ?>
+														<img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+													<?php } 
+
+												?>
+											
+											</div>
+											<?php if( get_field('acf_product_text_google_rating', 'option') ){ ?>
+												<span><?php echo get_field('acf_product_text_google_rating', 'option'); ?></span>
+											<?php } ?>
+										</div>
+									<?php } ?>
+
+									<?php if( get_field('acf_product_price', $product_post->ID) ){ ?>
+										<div class="item__price">
+											<span><?php echo get_field('acf_product_text_price', 'option'); ?> <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
+										</div>
+									<?php } ?>
+								</div>
+								<div class="item__offer-txt">
+									
+									<?php if( have_rows('acf_product_offer') ): ?>
+										<ul class="item__offer-list ">
+											<?php while( have_rows('acf_product_offer') ): the_row(); ?>
+
+												<li>
+													<i class="fas fa-check-circle"></i>
+													<span>
+														<?php echo get_sub_field('acf_product_offer_content', $product_post->ID); ?>
+													</span>
+												</li>
+											<?php endwhile; ?>
+										</ul>
+									<?php endif; ?>
+
+									<?php if( get_field('acf_product_offer_text', $product_post->ID) ){ ?>
+										<div class="item__txt">
+											<span>
+												<?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
+											</span>
+										</div>
+									<?php } ?>
+
+								</div>
+								<div class="item__links">
+									<button type="button" class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
+									<button type="button" class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
+								</div>
+							</div>
+						</div>
+
+                	<?php }
+                endif; 
+                wp_reset_postdata(); ?>
+
+
+		<?php }
+		
+		wp_reset_postdata(); 
+
+		$response = ob_get_contents();
+		ob_end_clean();
+
+		echo $response;
+		die(1);
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
 
 	// Filter AJAX
 	add_action( 'wp_ajax_nopriv_load-filter', 'product_ajax_get' );
@@ -745,7 +494,7 @@
 		if ( $product_posts ) {
 			foreach ( $product_posts as $product_post ) { setup_postdata( $product_post ); ?>
 
-                    <div class="item">
+                   <div class="item">
                         <div class="item__logo">
                             <picture>
                                 <source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
@@ -757,48 +506,49 @@
                                 <span><?php echo get_the_title($product_post->ID); ?></span>
                             </div>
                             <?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
-                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__link">
+                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__subtitle">
                                     <?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
                                 </a>
                             <?php } ?>
-                            <div class="item__characteristics">
-                                <div class="item__characteristic ">
-                                    <span><?php echo get_field('acf_product_btu', $product_post->ID); ?></span>
-                                    
-                                    <?php if( get_field('acf_filter_name_btu', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_btu', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_rating', $product_post->ID); ?>%</span>
-                                   
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_rating', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_size', $product_post->ID); ?></span>
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_size', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                            </div>
                             <div class="item__slider">
                                 <?php 
-
-                                    $gallery = get_field('acf_product_gallery', $product_post->ID);
-
-                                    if( $gallery ){ ?>
-                                    
-                                        <?php foreach( $gallery as $gallery_item ): ?>
+                                    if( have_rows('acf_product_slider', $product_post->ID) ){
+                                        while( have_rows('acf_product_slider', $product_post->ID) ) { the_row(); ?>
                                            
-                                                <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
+                                            <div class="item__slide">  
+                                                <div class="item__characteristics">
+                                                    <div class="item__characteristic ">
+                                                        <span><?php echo get_sub_field('acf_product_btu', $product_post->ID); ?></span>
+                                                        
+                                                        <?php if( get_field('acf_product_text_btu', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_btu', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                                    
+                                                        <?php if( get_field('acf_product_text_rating', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_rating', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_size', $product_post->ID); ?></span>
+
+                                                        <?php if( get_field('acf_product_text_size', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_size', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div> 
+
+                                                <a href="<?php the_permalink($product_post->ID); ?>">   
                                                     <picture class="h-object-fit">
-                                                        <source srcset="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" media="(max-width: 560px) ">
-                                                        <img src="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" alt="описание" />
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" alt="описание" />
                                                     </picture>
                                                 </a>
-                                        <?php endforeach; ?>
+                                            </div>
+
+                                        <?php } ?>
                                     
                                     <?php } else { ?>
 
@@ -819,7 +569,7 @@
                                     </div>
                                 <?php } ?>
                             
-                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_filter_name_link', 'option'); ?></a>
+                            <a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_product_text_link', 'option'); ?></a>
                         </div>
                         <div class="item__info">
                             <?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
@@ -857,9 +607,9 @@
                             </div>
                             <div class="item__offer-txt">
                                 
-                                <?php if( have_rows('acf_product_offer') ): ?>
+                                <?php if( have_rows('acf_product_offer', $product_post->ID) ): ?>
                                     <ul class="item__offer-list ">
-                                        <?php while( have_rows('acf_product_offer') ): the_row(); ?>
+                                        <?php while( have_rows('acf_product_offer', $product_post->ID) ): the_row(); ?>
 
                                             <li>
                                                 <i class="fas fa-check-circle"></i>
@@ -885,7 +635,6 @@
                                 <button class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
                             </div>
                         </div>
-                        
                     </div>
 
 			<?php } 
@@ -907,155 +656,155 @@
                 $default_loop = get_posts( $default_args );
 
                 if ( $default_loop ) : 
-                    foreach( $default_loop as $default_post ) { ?>
+                    foreach( $default_loop as $product_post ) { ?>
 
-                    <div class="item">
-                        <div class="item__logo">
-                            <picture>
-                                <source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $default_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
-                                <img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $default_post->ID) , 'medium'); ?>" alt="brand" />
-                            </picture>
-                        </div>
-                        <div class="item__hero">
-                            <div class="item__title">
-                                <span><?php echo get_the_title($default_post->ID); ?></span>
-                            </div>
-                            <?php if( get_field('acf_product_brand_model', $default_post->ID) ){ ?>
-                                <a href="<?php the_permalink($default_post->ID); ?>" class="item__link">
-                                    <?php echo get_field('acf_product_brand_model', $default_post->ID); ?>
-                                </a>
-                            <?php } ?>
-                            <div class="item__characteristics">
-                                <div class="item__characteristic ">
-                                    <span><?php echo get_field('acf_product_btu', $default_post->ID); ?></span>
-                                    
-                                    <?php if( get_field('acf_filter_name_btu', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_btu', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_rating', $default_post->ID); ?>%</span>
-                                   
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_rating', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                                <div class="item__characteristic">
-                                    <span><?php echo get_field('acf_product_size', $default_post->ID); ?></span>
-                                    <?php if( get_field('acf_filter_name_rating', 'option') ){ ?>
-                                        <span><?php echo get_field('acf_filter_name_size', 'option'); ?></span>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                            <div class="item__slider">
+						<div class="item">
+							<div class="item__logo">
+								<picture>
+									<source srcset="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" media="(max-width: 560px) ">
+									<img src="<?php echo wp_get_attachment_image_url(get_field('acf_product_brand_logo', $product_post->ID) , 'medium'); ?>" alt="brand" />
+								</picture>
+							</div>
+							<div class="item__hero">
+								<div class="item__title">
+									<span><?php echo get_the_title($product_post->ID); ?></span>
+								</div>
+								<?php if( get_field('acf_product_brand_model', $product_post->ID) ){ ?>
+									<a href="<?php the_permalink($product_post->ID); ?>" class="item__subtitle">
+										<?php echo get_field('acf_product_brand_model', $product_post->ID); ?>
+									</a>
+								<?php } ?>
+								<div class="item__slider">
                                 <?php 
-
-                                    $gallery = get_field('acf_product_gallery', $default_post->ID);
-
-                                    if( $gallery ){ ?>
-                                    
-                                        <?php foreach( $gallery as $gallery_item ): ?>
+                                    if( have_rows('acf_product_slider', $product_post->ID) ){
+                                        while( have_rows('acf_product_slider', $product_post->ID) ) { the_row(); ?>
                                            
-                                                <a href="<?php the_permalink($default_post->ID); ?>" class="item__slide">   
+                                            <div class="item__slide">  
+                                                <div class="item__characteristics">
+                                                    <div class="item__characteristic ">
+                                                        <span><?php echo get_sub_field('acf_product_btu', $product_post->ID); ?></span>
+                                                        
+                                                        <?php if( get_field('acf_product_text_btu', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_btu', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_rating', $product_post->ID); ?>%</span>
+                                                    
+                                                        <?php if( get_field('acf_product_text_rating', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_rating', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="item__characteristic">
+                                                        <span><?php echo get_sub_field('acf_product_size', $product_post->ID); ?></span>
+
+                                                        <?php if( get_field('acf_product_text_size', 'option') ){ ?>
+                                                            <span class="item__characteristic-green"><?php echo get_field('acf_product_text_size', 'option'); ?></span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div> 
+
+                                                <a href="<?php the_permalink($product_post->ID); ?>">   
                                                     <picture class="h-object-fit">
-                                                        <source srcset="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" media="(max-width: 560px) ">
-                                                        <img src="<?php echo wp_get_attachment_image_url( $gallery_item , 'large'); ?>" alt="описание" />
+                                                        <source srcset="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" media="(max-width: 560px) ">
+                                                        <img src="<?php echo wp_get_attachment_image_url( get_sub_field('acf_product_image', $product_post->ID) , 'large'); ?>" alt="описание" />
                                                     </picture>
                                                 </a>
-                                        <?php endforeach; ?>
+                                            </div>
+
+                                        <?php } ?>
                                     
                                     <?php } else { ?>
 
-                                        <a href="<?php the_permalink($default_post->ID); ?>" class="item__slide">   
+                                        <a href="<?php the_permalink($product_post->ID); ?>" class="item__slide">   
                                             <picture class="h-object-fit">
-                                                <source srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($default_post->ID)  , 'large'); ?>" media="(max-width: 560px) ">
-                                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($default_post->ID)  , 'large'); ?>" alt="product" />
+                                                <source srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" media="(max-width: 560px) ">
+                                                <img src="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id($product_post->ID)  , 'large'); ?>" alt="product" />
                                             </picture>
                                         </a>
 
                                     <?php } ?>
                             
                             </div>
-                            
-                                <?php if( has_excerpt($default_post->ID) ){ ?>
-                                    <div class="item__recommend">
-                                        <span><?php echo get_the_excerpt($default_post->ID);?></span>
-                                    </div>
-                                <?php } ?>
-                            
-                            <a href="<?php the_permalink($default_post->ID); ?>" class="item__link"><?php echo get_field('acf_filter_name_link', 'option'); ?></a>
-                        </div>
-                        <div class="item__info">
-                            <?php if( get_field('acf_product_info', $default_post->ID) ){ ?>
-                                <div class="item__desc">
-                                    <?php echo get_field('acf_product_info', $default_post->ID); ?>
-                                </div>
-                            <?php } ?>
-                            <div class="item__rate-price">
-                                <?php if( get_field('acf_product_rating', $default_post->ID) ){ ?>
-                                    <div class="item__rate">
-                                        <div class="item__rate-stars">
-                                           
-                                            <?php $ratings = get_field('acf_product_rating', $default_post->ID);  
+								
+									<?php if( has_excerpt($product_post->ID) ){ ?>
+										<div class="item__recommend">
+											<span><?php echo get_the_excerpt($product_post->ID);?></span>
+										</div>
+									<?php } ?>
+								
+								<a href="<?php the_permalink($product_post->ID); ?>" class="item__link"><?php echo get_field('acf_product_text_link', 'option'); ?></a>
+							</div>
+							<div class="item__info">
+								<?php if( get_field('acf_product_info', $product_post->ID) ){ ?>
+									<div class="item__desc">
+										<?php echo get_field('acf_product_info', $product_post->ID); ?>
+									</div>
+								<?php } ?>
+								<div class="item__rate-price">
+									<?php if( get_field('acf_product_rating', $product_post->ID) ){ ?>
+										<div class="item__rate">
+											<div class="item__rate-stars">
+											
+												<?php $ratings = get_field('acf_product_rating', $product_post->ID);  
 
-                                                $stars = calculateStarRating($ratings);
+													$stars = calculateStarRating($ratings);
 
-                                                for ($i = 0; $i < $stars; ++$i) { ?>
-                                                    <img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
-                                                <?php } 
+													for ($i = 0; $i < $stars; ++$i) { ?>
+														<img src="<?php echo $dir; ?>/images/star-green.svg" alt="star">
+													<?php } 
 
-                                            ?>
-                                         
-                                        </div>
-                                        <?php if( get_field('acf_product_text_google_rating', 'option') ){ ?>
-                                            <span><?php echo get_field('acf_product_text_google_rating', 'option'); ?></span>
-                                        <?php } ?>
-                                    </div>
-                                <?php } ?>
+												?>
+											
+											</div>
+											<?php if( get_field('acf_product_text_google_rating', 'option') ){ ?>
+												<span><?php echo get_field('acf_product_text_google_rating', 'option'); ?></span>
+											<?php } ?>
+										</div>
+									<?php } ?>
 
-                                <?php if( get_field('acf_product_price', $default_post->ID) ){ ?>
-                                    <div class="item__price">
-                                        <span><?php echo get_field('acf_product_text_price', 'option'); ?> <?php echo get_field('acf_product_price', $default_post->ID); ?></span>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                            <div class="item__offer-txt">
-                                
-                                <?php if( have_rows('acf_product_offer') ): ?>
-                                    <ul class="item__offer-list ">
-                                        <?php while( have_rows('acf_product_offer') ): the_row(); ?>
+									<?php if( get_field('acf_product_price', $product_post->ID) ){ ?>
+										<div class="item__price">
+											<span><?php echo get_field('acf_product_text_price', 'option'); ?> <?php echo get_field('acf_product_price', $product_post->ID); ?></span>
+										</div>
+									<?php } ?>
+								</div>
+								<div class="item__offer-txt">
+									
+									<?php if( have_rows('acf_product_offer') ): ?>
+										<ul class="item__offer-list ">
+											<?php while( have_rows('acf_product_offer') ): the_row(); ?>
 
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                <span>
-                                                    <?php echo get_sub_field('acf_product_offer_content', $default_post->ID); ?>
-                                                </span>
-                                            </li>
-                                        <?php endwhile; ?>
-                                    </ul>
-                                <?php endif; ?>
+												<li>
+													<i class="fas fa-check-circle"></i>
+													<span>
+														<?php echo get_sub_field('acf_product_offer_content', $product_post->ID); ?>
+													</span>
+												</li>
+											<?php endwhile; ?>
+										</ul>
+									<?php endif; ?>
 
-                                <?php if( get_field('acf_product_offer_text', $default_post->ID) ){ ?>
-                                    <div class="item__txt">
-                                        <span>
-                                            <?php echo get_field('acf_product_offer_text', $default_post->ID); ?>
-                                        </span>
-                                    </div>
-                                <?php } ?>
+									<?php if( get_field('acf_product_offer_text', $product_post->ID) ){ ?>
+										<div class="item__txt">
+											<span>
+												<?php echo get_field('acf_product_offer_text', $product_post->ID); ?>
+											</span>
+										</div>
+									<?php } ?>
 
-                            </div>
-                            <div class="item__links">
-                                <button  class="button btn-modal-product" data-item="<?php echo $default_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
-                                <button class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
-                            </div>
-                        </div>
-                        
-                    </div>
+								</div>
+								<div class="item__links">
+									<button  class="button btn-modal-product" data-item="<?php echo $product_post->ID ?>"><?php echo get_field('acf_product_text_btn_benefits', 'option'); ?></button>
+									<button class="button btn-modal-form"><?php echo get_field('acf_product_text_btn_speak', 'option'); ?></button>
+								</div>
+							</div>
+						</div>
 
-                <?php }
+                	<?php }
                 endif; 
                 wp_reset_postdata(); ?>
-        </div>
+       
 
 
 
@@ -1234,6 +983,31 @@ require get_template_directory() . '/includes/swipeks.php';
 
 
 
+// define( 'MY_ACF_PATH', get_stylesheet_directory() . '/includes/acf/' );
+// 	define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/includes/acf/' );
+	
+// 	include_once( MY_ACF_PATH . 'acf.php' );
+	
+// 	add_filter('acf/settings/url', 'my_acf_settings_url');
+// 	function my_acf_settings_url( $url ) {
+// 		return MY_ACF_URL;
+// 	}
+	
+// 	add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
+// 	function my_acf_settings_show_admin( $show_admin ) {
+// 		return false;
+// 	}
+	
+	// Admin fields to product
+	// add_action( 'acf/register_fields', 'my_function_to_add_field_groups' );
+	// function my_function_to_add_field_groups() {
+
+	// 	if( function_exists('acf_add_local_field_group') ):
+
+			
+	// 	endif;
+
+	// }
 
 
 

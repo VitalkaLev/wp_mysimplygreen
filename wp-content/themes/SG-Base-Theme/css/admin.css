@@ -812,11 +812,21 @@ section .inner-box {
 /* Swipex */
 
 .acf-postbox .hndle {
-  color: white;
+  color: white!important;
   padding: 0!important;
 }
 
+.acf-postbox .hndle.ui-sortable-handle {
+    color: white!important;
+    font-size: 0;
+    padding: 0!important;
+}
+
 li.acf-fr{
+  display: none;
+}
+
+li#toplevel_page_edit-post_type-acf-field-group , li#toplevel_page_cptui_main_menu {
   display: none;
 }
 
@@ -843,5 +853,17 @@ select#newproduct_size_parent{
 
 
 .post-type-locations .term-parent-wrap{
+  display: none!important;
+}
+
+select.acf-gallery-sort {
+    display: none;
+}
+
+[data-slug="advanced-custom-fields-pro"]{
+  display: none!important;
+}
+
+[data-slug="custom-post-type-ui"]{
   display: none!important;
 }

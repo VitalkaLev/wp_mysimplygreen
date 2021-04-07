@@ -1,25 +1,11 @@
 //GeoLocation
 
 let requestUrl = "http://ip-api.com/json";
-const takeGeo = $('.current-location__button')
+const takeGeo = $('.current-location__button');
 
-function myGeo() {
-    $.ajax({
-        url: requestUrl,
-        type: 'GET',
-        success: function(json) {
-            $('.current-location__name').text(json.city)
-        },
-        error: function(err) {
-           
-        }
-    });
-}
-myGeo()
 
-takeGeo.click(function() {
-    myGeo()
-});
+
+
 
 
 // WGAC
@@ -46,7 +32,13 @@ if ('objectFit' in document.documentElement.style === false) {
 
 
 // Slider
-$('.item__slider').slick();
+$('.item__slider').slick(
+    {
+        infinite: true,
+        speed: 1200,
+        fade: true,
+    }
+);
 
 
 // Filters
@@ -110,7 +102,14 @@ $(".category-filter-group input").on("change", function(){
 function brand_ajax_get() {
 
     function slickCarousel() {
-        $('.item__slider').slick();
+        $('.item__slider').slick(
+            {
+                infinite: true,
+                speed: 1200,
+                fade: true,
+            }
+        );
+        
     }
 
     function destroyCarousel() {
@@ -141,7 +140,7 @@ function brand_ajax_get() {
             $(btnModalProduct).each(function(i,elem) {
                 elem.addEventListener('click', () => {
                 modalProduct.style.display = 'flex';
-                bodyElement.style.position = 'fixed';
+                // bodyElement.style.position = 'fixed';
                 
                 span[0].onclick = function () {
                   modalProduct.style.display = 'none';
@@ -155,7 +154,7 @@ function brand_ajax_get() {
             $(btnModalForm).each(function(i,elem) {
                 elem.addEventListener('click', () => {
                 modalForm.style.display = 'flex';
-                bodyElement.style.position = 'fixed';
+                // bodyElement.style.position = 'fixed';
             
                 span[1].onclick = function () {
                   modalForm.style.display = 'none';
@@ -197,8 +196,6 @@ function brand_ajax_get() {
         }
     });
 }
-
-
 $('.category-filter__submit').on('click' , brand_ajax_get);
 
 $( ".item__links .btn-modal-product" ).on( "click", function(){
@@ -222,7 +219,125 @@ $( ".item__links .btn-modal-product" ).on( "click", function(){
 
 
 //Collapse mobile
-
 $('.category-filter-group__action').click(function(){
     $(this).parent(".category-filter-group").toggleClass('active')
-})
+});
+
+
+
+// get location
+(function() {
+
+    var currentLocation = $('.current-location__name');
+
+
+    $(document).mouseup(function (e){ 
+        var div = $(".current-location__list"); 
+        if (!div.is(e.target) 
+            && div.has(e.target).length === 0) { 
+                $('.current-location__list').prop('hidden', true);
+                $('.current-location__button').attr("aria-expanded","false");
+                
+        }
+    });
+
+    $('.current-location__item button').on('click' , function(){
+        var $val = $(this).val();
+        currentLocation.text($val);
+        var $product_category = $(this).data('category'); 
+
+        $('.current-location__list').prop('hidden', true);
+        $('.current-location__button').attr("aria-expanded","false");
+        
+        function slickCarousel() {
+            $('.item__slider').slick(
+                {
+                    infinite: true,
+                    speed: 1200,
+                    fade: true,
+                }
+            );
+            
+        }
+    
+        function destroyCarousel() {
+            if ($('.item__slider').hasClass('slick-initialized')) {
+                $('.item__slider').slick('destroy');
+            }      
+        }
+
+        var ajaxurl = '../wp-admin/admin-ajax.php';
+
+        jQuery.ajax({
+            type: 'POST',
+            url: ajaxurl,
+            data: {"action": "load-location", get_location: $val  , product_category: $product_category },
+            success: function(response) {
+
+                jQuery(".product-ajax").html(response);  
+
+                let bodyElement = document.querySelector('body');
+                let modalProduct = document.querySelector('.modal-product');
+                let modalForm = document.querySelector('.modal-form');
+                let btnModalProduct = document.querySelectorAll('.btn-modal-product');
+                let btnModalForm = document.querySelectorAll('.btn-modal-form');
+                let span = document.querySelectorAll('.close');
+    
+                $(btnModalProduct).each(function(i,elem) {
+                    elem.addEventListener('click', () => {
+                    console.log('!!!!!!!!!')
+                    modalProduct.style.display = 'flex';
+                    // bodyElement.style.position = 'fixed';
+                    
+                    span[0].onclick = function () {
+                      modalProduct.style.display = 'none';
+                      bodyElement.style.position = 'initial';
+                      // $(this).childred('.modal-inner').html('')
+                      $('.modal-product .modal-inner').html('')
+                    };
+                  });
+                });
+                
+                $(btnModalForm).each(function(i,elem) {
+                    elem.addEventListener('click', () => {
+                    modalForm.style.display = 'flex';
+                    // bodyElement.style.position = 'fixed';
+                
+                    span[1].onclick = function () {
+                      modalForm.style.display = 'none';
+                      bodyElement.style.position = 'initial';
+                      $(this).children('.modal-inner').html('')
+                    };
+                  });
+                });
+
+                destroyCarousel()
+                slickCarousel();
+
+
+                $( ".item__links .btn-modal-product" ).on( "click", function(){
+                    var $this = $(this);
+                    var $thisItem = $this.data('item'); 
+                    var ajaxurl = '../wp-admin/admin-ajax.php';
+                
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: ajaxurl,
+                        data: {"action": "loadmore", getID: $thisItem },
+                        success: function(response) {
+                            jQuery(".modal-product .modal-inner").html(response);            
+                            
+                            return false;
+                        }
+                    });
+                });
+
+                
+
+                return false;
+            }
+        });
+
+
+    })
+  })();

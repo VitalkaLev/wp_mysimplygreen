@@ -99,7 +99,7 @@ let span = document.querySelectorAll('.close');
 if (newBtn) {
   newBtn.addEventListener('click', () => {
     modalNewCx.style.display = 'flex';
-    bodyElement.style.position = 'fixed';
+    // bodyElement.style.position = 'fixed';
 
     span[1].onclick = function () {
       modalNewCx.style.display = 'none';
@@ -111,8 +111,15 @@ if (newBtn) {
 
 if (existingBtn) {
   existingBtn.addEventListener('click', () => {
+
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
+
     modalExistingCx.style.display = 'flex';
-    bodyElement.style.position = 'fixed';
+    // bodyElement.style.position = 'fixed';
 
     span[0].onclick = function () {
       modalExistingCx.style.display = 'none';
@@ -123,8 +130,9 @@ if (existingBtn) {
 
 $(btnModalProduct).each(function(i,elem) {
 	elem.addEventListener('click', () => {
+
     modalProduct.style.display = 'flex';
-    bodyElement.style.position = 'fixed';
+    // bodyElement.style.position = 'fixed';
 
     span[0].onclick = function () {
       modalProduct.style.display = 'none';
@@ -137,10 +145,13 @@ $(btnModalProduct).each(function(i,elem) {
 
 $(btnModalForm).each(function(i,elem) {
 	elem.addEventListener('click', () => {
+    console.log('!!!!!!!!!!!')
+
     modalForm.style.display = 'flex';
-    bodyElement.style.position = 'fixed';
+    // bodyElement.style.position = 'fixed';
 
     span[1].onclick = function () {
+      console.log('11111111111112222')
       modalForm.style.display = 'none';
       bodyElement.style.position = 'initial';
       $(this).children('.modal-inner').html('')
